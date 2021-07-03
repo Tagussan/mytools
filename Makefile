@@ -1,3 +1,7 @@
+
+
+install: tmux zsh nvim delta lsd ripgrep
+
 libevent:
 	./install/libevent/install.sh
 
