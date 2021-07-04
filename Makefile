@@ -1,5 +1,4 @@
-
-deploy:
+deploy: vimplug
 	ln -s `pwd`/config/.zshrc $(HOME)/.zshrc
 	ln -s `pwd`/config/.tmux.conf $(HOME)/.tmux.conf
 	ln -s `pwd`/config/init.vim $(HOME)/.config/nvim/init.vim
@@ -9,16 +8,16 @@ clean:
 
 install: tmux nvim delta lsd ripgrep zoxide mcfly
 
-libevent:
-	./install/libevent/install.sh
-
-tmux: libevent
+tmux:
 	./install/tmux/install.sh
 	cp ./install/tmux/temp/build/tmux bin/
 
 #zsh:
 #	./install/zsh/install.sh
 #	cp ./install/zsh/temp/build/Src/zsh bin/
+
+vimplug:
+	./install/vimplug/install.sh
 
 nvim:
 	./install/nvim/install.sh
