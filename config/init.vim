@@ -9,25 +9,19 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-scripts/matchit.zip'
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'justinmk/vim-syntax-extra'
 Plug 'alvan/vim-closetag'
 Plug 'osyo-manga/vim-brightest'
-Plug 'lervag/vimtex', {'for': 'tex'}
-Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-sleuth'
 Plug 'dense-analysis/ale'
-"Plug 'airblade/vim-gitgutter'
 Plug 'simeji/winresizer'
 Plug 'svermeulen/vim-easyclip'
 Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'lambdalisue/fern.vim'
-"Plug 'maxboisvert/vim-simple-complete'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
 Plug 'junegunn/fzf.vim'
 Plug 'haorenW1025/completion-nvim'
 Plug 'steelsojka/completion-buffers'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSInstall c cpp python bash dockerfile css html javascript latex regex yaml julia'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/completion-treesitter'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'p00f/nvim-ts-rainbow'
@@ -83,6 +77,21 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 " indent guide
 let g:indent_guides_enable_on_vim_startup = 1
 
+"**************************
+" treesitter
+"**************************
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+EOF
+
+"**************************
+" line and git signs
+"**************************
 lua<<EOF
 require('lualine').setup()
 require('gitsigns').setup{
@@ -149,15 +158,15 @@ let g:cursorhold_updatetime = 100
 "**************************
 " VimTex
 "**************************
-let g:tex_flavor='latex'
-"let g:vimtex_view_enabled = 1
-let g:tex_conceal=""
-let g:vimtex_latexmk_options = '-latex=pdflatex --shell-escape'
-"let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_fold_enabled=0
-let g:tex_fast = "bMpr"
-autocmd BufNewFile,BufRead *.tex set spell
-set spelllang=en,cjk
+"let g:tex_flavor='latex'
+""let g:vimtex_view_enabled = 1
+"let g:tex_conceal=""
+"let g:vimtex_latexmk_options = '-latex=pdflatex --shell-escape'
+""let g:vimtex_view_general_viewer = 'okular'
+"let g:vimtex_fold_enabled=0
+"let g:tex_fast = "bMpr"
+"autocmd BufNewFile,BufRead *.tex set spell
+"set spelllang=en,cjk
 
 "**************************
 " Completion settings
