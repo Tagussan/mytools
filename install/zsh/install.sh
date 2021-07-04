@@ -14,5 +14,5 @@ tar -xvf zsh-$VERSION.tar.xz
 mv zsh-$VERSION build
 
 cd build
-./configure
+./configure --disable-dynamic
 make

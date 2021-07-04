@@ -26,18 +26,18 @@ zinit light "agkozak/agkozak-zsh-prompt"
 zinit light "zsh-users/zsh-autosuggestions"
 zinit light "zsh-users/zsh-syntax-highlighting"
 
-zinit light "b4b4r07/enhancd"
-
-ENHANCD_DISABLE_DOT=1
-
-function exec_enhancd() {
-  zle kill-whole-line
-  cd
-  zle .accept-line
-}
-
-zle -N exec_enhancd
-bindkey '^G' exec_enhancd
+#zinit light "b4b4r07/enhancd"
+#
+#ENHANCD_DISABLE_DOT=1
+#
+#function exec_enhancd() {
+#  zle kill-whole-line
+#  cd
+#  zle .accept-line
+#}
+#
+#zle -N exec_enhancd
+#bindkey '^G' exec_enhancd
 
 # Good history completion
 zinit light "zsh-users/zsh-history-substring-search"
@@ -114,3 +114,5 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 #eval "$(pyenv init -)"
 #eval "$(mcfly init zsh)"
+
+export PATH="$HOME/mytools/bin:$PATH"

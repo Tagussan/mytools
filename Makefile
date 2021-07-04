@@ -1,6 +1,13 @@
 
+deploy:
+	ln -s `pwd`/config/.zshrc $(HOME)/.zshrc
+	ln -s `pwd`/config/.tmux.conf $(HOME)/.tmux.conf
+	ln -s `pwd`/config/init.vim $(HOME)/.config/nvim/init.vim
 
-install: tmux zsh nvim delta lsd ripgrep
+clean:
+	rm $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/init.vim
+
+install: tmux nvim delta lsd ripgrep
 
 libevent:
 	./install/libevent/install.sh
@@ -9,9 +16,9 @@ tmux: libevent
 	./install/tmux/install.sh
 	cp ./install/tmux/temp/build/tmux bin/
 
-zsh:
-	./install/zsh/install.sh
-	cp ./install/zsh/temp/build/Src/zsh bin/
+#zsh:
+#	./install/zsh/install.sh
+#	cp ./install/zsh/temp/build/Src/zsh bin/
 
 nvim:
 	./install/nvim/install.sh
