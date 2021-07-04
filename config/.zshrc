@@ -50,20 +50,12 @@ setopt auto_menu
 setopt cdable_vars
 zstyle ':completion:*:default' menu select=1
 HISTFILE=$HOME/.zsh-history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=2000
+SAVEHIST=2000
 setopt share_history
 
 alias ls=lsd
 alias v=nvim
-
-function select-history() {
-  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
-    CURSOR=$#BUFFER
-}
-
-zle -N select-history
-#bindkey '^r' select-history
 
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
