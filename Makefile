@@ -7,7 +7,7 @@ deploy:
 clean:
 	rm $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/init.vim
 
-install: tmux nvim delta lsd ripgrep
+install: tmux nvim delta lsd ripgrep zoxide mcfly
 
 libevent:
 	./install/libevent/install.sh
@@ -35,3 +35,9 @@ lsd:
 ripgrep:
 	./install/ripgrep/install.sh
 	cp ./install/ripgrep/temp/build/rg bin/
+
+zoxide:
+	./install/zoxide/install.sh
+
+mcfly:
+	./install/mcfly/install.sh
