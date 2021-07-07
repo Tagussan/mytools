@@ -2,6 +2,7 @@ call plug#begin()
 " Make sure you use single quotes
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'w0ng/vim-hybrid'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'mbbill/undotree'
@@ -31,12 +32,16 @@ call plug#end()
 
 set noshowmode
 
-colorscheme hybrid
+set termguicolors
 "set background=dark
+
+" configure nvcode-color-schemes
+let g:nvcode_termcolors=256
+syntax on
+colorscheme hybrid
 
 "share clipboard
 " set clipboard=unnamed,unnamedplus
-syntax on
 
 set autoindent
 set smartindent
