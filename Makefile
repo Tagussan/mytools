@@ -2,9 +2,10 @@ deploy: vimplug
 	ln -s `pwd`/config/.zshrc $(HOME)/.zshrc
 	ln -s `pwd`/config/.tmux.conf $(HOME)/.tmux.conf
 	ln -s `pwd`/config/init.vim $(HOME)/.config/nvim/init.vim
+	ln -s `pwd`/config/.gitconfig $(HOME)/.gitconfig
 
 clean:
-	rm $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/init.vim
+	rm $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/nvim/init.vim $(HOME)/.gitconfig
 
 install: tmux nvim delta lsd ripgrep zoxide mcfly
 
