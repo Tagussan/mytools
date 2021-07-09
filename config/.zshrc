@@ -36,7 +36,7 @@ AGKOZAK_LEFT_PROMPT_ONLY=1
 # and reversed when in vi command mode
 AGKOZAK_PROMPT_CHAR=( '%F{magenta}❯%f' '%F{red}❯%f' '%F{magenta}❮%f' )
 AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' )
-AGKOZAK_USER_HOST_DISPLAY=0
+AGKOZAK_USER_HOST_DISPLAY=1
 
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
