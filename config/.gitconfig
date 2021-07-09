@@ -1,0 +1,41 @@
+[user]
+    name = Tagussan
+
+[alias]
+    st = status
+    lgs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lg = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    today = log --oneline --since='12 hour ago'
+    br = branch
+    cm = commit
+    co = checkout
+    nffmerge = merge --no-ff
+
+[credential]
+    helper = cache --timeout=3600
+[push]
+    default = simple
+[merge]
+    ff = false
+[pull]
+    rebase = true
+[core]
+    editor = vim
+    excludesfile = $HOME/.gitignore_global
+
+[pager]
+    diff = delta --theme='zenburn'
+
+#[filter "nbstripout"]
+#       clean = $HOME/.local/bin/nbstripout
+#       smudge = cat
+#       required = true
+#[diff "ipynb"]
+#       textconf = $HOME/.local/bin/nbstripout -t
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    side-by-side = true
+    line-numbers = true

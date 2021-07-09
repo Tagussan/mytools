@@ -93,11 +93,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 #eval "$(pyenv init -)"
 #
+export PATH="$HOME/mytools/bin:$PATH"
+
 export MCFLY_FUZZY=true
 eval "$(mcfly init zsh)"
 eval "$(zoxide init zsh)"
-
-export PATH="$HOME/mytools/bin:$PATH"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
