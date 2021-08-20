@@ -96,6 +96,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/mytools/bin:$PATH"
 
 export MCFLY_FUZZY=true
+export MCFLY_INTERFACE_VIEW=BOTTOM
 eval "$(mcfly init zsh)"
 eval "$(zoxide init zsh)"
 
