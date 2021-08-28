@@ -41,6 +41,7 @@ cd temp
 #./configure --prefix=$LOCAL --enable-static CFLAGS="-I$LOCAL/include -I$LOCAL/include/ncurses" LDFLAGS="-L$LOCAL/lib -L$LOCAL/include/ncurses -L$LOCAL/include" LIBEVENT_CFLAGS="-I$LOCAL/include" LIBEVENT_LIBS="-L$LOCAL/lib -levent"
 #make
 
+mkdir build
 cd build
 wget https://github.com/Tagussan/tmux-static-build/raw/main/tmux
 chmod u+x tmux
