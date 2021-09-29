@@ -18,13 +18,11 @@ Plug 'simeji/winresizer'
 Plug 'svermeulen/vim-easyclip'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
-Plug 'junegunn/fzf.vim'
 Plug 'haorenW1025/completion-nvim'
 Plug 'steelsojka/completion-buffers'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/completion-treesitter'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-tree.lua', { 'tag' : '1.2.8' }
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
