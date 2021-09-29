@@ -1,6 +1,7 @@
 deploy: vimplug
 	ln -s `pwd`/config/.zshrc $(HOME)/.zshrc
 	ln -s `pwd`/config/.tmux.conf $(HOME)/.tmux.conf
+	mkdir -p $(HOME)/.config/nvim
 	ln -s `pwd`/config/init.vim $(HOME)/.config/nvim/init.vim
 	ln -s `pwd`/config/.gitconfig $(HOME)/.gitconfig
 	bin/nvim +PlugInstall +qall
