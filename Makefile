@@ -4,7 +4,7 @@ deploy: vimplug
 	mkdir -p $(HOME)/.config/nvim
 	ln -s `pwd`/config/init.vim $(HOME)/.config/nvim/init.vim
 	ln -s `pwd`/config/.gitconfig $(HOME)/.gitconfig
-	bin/nvim +PlugInstall +qall
+	bin/nvim -E +PlugInstall +qall
 
 clean:
 	rm -rf $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/nvim $(HOME)/.gitconfig
