@@ -1,13 +1,16 @@
-deploy: vimplug
+deploy: vimplug fisher
 	ln -s `pwd`/config/.zshrc $(HOME)/.zshrc
 	ln -s `pwd`/config/.tmux.conf $(HOME)/.tmux.conf
 	mkdir -p $(HOME)/.config/nvim
 	ln -s `pwd`/config/init.vim $(HOME)/.config/nvim/init.vim
 	ln -s `pwd`/config/.gitconfig $(HOME)/.gitconfig
+	mkdir -p $(HOME)/.config/fish
+	ln -s `pwd`/config/config.fish $(HOME)/.config/fish/config.fish
+	ln -s `pwd`/config/fish_plugins $(HOME)/.config/fish/fish_plugins
 	bin/nvim -E +PlugInstall +qall
 
 clean:
-	rm -rf $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/nvim $(HOME)/.gitconfig
+	rm -rf $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/nvim $(HOME)/.gitconfig $(HOME)/.config/fish
 
 install-ubuntu: install fish-ubuntu zsh-ubuntu
 
@@ -23,6 +26,9 @@ tmux:
 
 vimplug:
 	./install/vimplug/install.sh
+
+fisher:
+	curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
 nvim:
 	./install/nvim/install.sh

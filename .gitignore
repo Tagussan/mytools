@@ -3,4 +3,5 @@
 !*.*
 
 !Makefile
+!config/fish_plugins
 temp/
