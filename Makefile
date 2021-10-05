@@ -6,7 +6,9 @@ deploy: vimplug fisher
 	ln -s `pwd`/config/.gitconfig $(HOME)/.gitconfig
 	mkdir -p $(HOME)/.config/fish
 	ln -s `pwd`/config/config.fish $(HOME)/.config/fish/config.fish
+	rm $(HOME)/.config/fish/fish_plugins
 	ln -s `pwd`/config/fish_plugins $(HOME)/.config/fish/fish_plugins
+	fish -c "fisher update"
 	bin/nvim -E +PlugInstall +qall
 
 clean:
@@ -28,7 +30,7 @@ vimplug:
 	./install/vimplug/install.sh
 
 fisher:
-	curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+	fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
 
 nvim:
 	./install/nvim/install.sh
