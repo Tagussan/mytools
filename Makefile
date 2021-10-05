@@ -9,6 +9,8 @@ deploy: vimplug
 clean:
 	rm -rf $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/nvim $(HOME)/.gitconfig
 
+install-ubuntu: install fish-ubuntu zsh-ubuntu
+
 install: tmux nvim delta lsd ripgrep zoxide mcfly
 
 tmux:
@@ -43,3 +45,12 @@ zoxide:
 
 mcfly:
 	./install/mcfly/install.sh
+
+fish-ubuntu:
+	sudo apt-add-repository ppa:fish-shell/release-3
+	sudo apt update
+	sudo apt install fish -y
+
+zsh-ubuntu:
+	sudo apt update
+	sudo apt install zsh -y
