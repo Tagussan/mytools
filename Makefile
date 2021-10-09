@@ -16,7 +16,7 @@ clean:
 
 install-ubuntu: install fish-ubuntu zsh-ubuntu
 
-install: tmux nvim delta lsd ripgrep zoxide mcfly
+install: tmux nvim delta lsd ripgrep zoxide mcfly github-cli
 
 tmux:
 	./install/tmux/install.sh
@@ -53,6 +53,10 @@ zoxide:
 
 mcfly:
 	./install/mcfly/install.sh
+
+github-cli:
+	./install/gh-cli/install.sh
+	cp ./install/gh-cli/temp/build/gh bin/
 
 fish-ubuntu:
 	sudo apt-add-repository ppa:fish-shell/release-3
