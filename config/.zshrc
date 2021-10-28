@@ -26,8 +26,24 @@ zinit light "agkozak/agkozak-zsh-prompt"
 zinit light "zsh-users/zsh-autosuggestions"
 zinit light "zsh-users/zsh-syntax-highlighting"
 
-# Good history completion
-zinit light "zsh-users/zsh-history-substring-search"
+# taken from https://github.com/Aloxaf/dotfiles/blob/master/zsh/.config/zsh/zshrc.zsh
+zinit wait="0" lucid light-mode for larkery/zsh-histdb
+_zsh_autosuggest_strategy_histdb_top() {
+    local query="
+        select commands.argv from history
+        left join commands on history.command_id = commands.rowid
+        left join places on history.place_id = places.rowid
+        where commands.argv LIKE '$(sql_escape $1)%'
+        group by commands.argv, places.dir
+        order by places.dir != '$(sql_escape $PWD)', count(*) desc
+        limit 1
+    "
+    suggestion=$(_histdb_query "$query")
+}
+ZSH_AUTOSUGGEST_STRATEGY=(histdb_top match_prev_cmd completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+
 
 AGKOZAK_COLORS_BRANCH_STATUS=248
 AGKOZAK_BLANK_LINES=1

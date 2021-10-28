@@ -16,15 +16,11 @@ clean:
 
 install-ubuntu: install fish-ubuntu zsh-ubuntu
 
-install: tmux nvim delta lsd ripgrep zoxide mcfly github-cli
+install: tmux nvim delta lsd ripgrep zoxide mcfly github-cli sqlite
 
 tmux:
 	./install/tmux/install.sh
 	cp ./install/tmux/temp/build/tmux bin/
-
-#zsh:
-#	./install/zsh/install.sh
-#	cp ./install/zsh/temp/build/Src/zsh bin/
 
 vimplug:
 	./install/vimplug/install.sh
@@ -57,6 +53,10 @@ mcfly:
 github-cli:
 	./install/gh-cli/install.sh
 	cp ./install/gh-cli/temp/build/gh bin/
+
+sqlite:
+	./install/sqlite/install.sh
+	cp ./install/sqlite/temp/build/sqlite3 bin/
 
 fish-ubuntu:
 	sudo apt-add-repository ppa:fish-shell/release-3
