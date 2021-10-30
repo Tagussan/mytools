@@ -1,4 +1,4 @@
-deploy: vimplug fisher
+deploy: vimplug
 	ln -s `pwd`/config/.zshrc $(HOME)/.zshrc
 	ln -s `pwd`/config/.tmux.conf $(HOME)/.tmux.conf
 	mkdir -p $(HOME)/.config/nvim
@@ -6,9 +6,9 @@ deploy: vimplug fisher
 	ln -s `pwd`/config/.gitconfig $(HOME)/.gitconfig
 	mkdir -p $(HOME)/.config/fish
 	ln -s `pwd`/config/config.fish $(HOME)/.config/fish/config.fish
-	rm $(HOME)/.config/fish/fish_plugins
+	#rm $(HOME)/.config/fish/fish_plugins
 	ln -s `pwd`/config/fish_plugins $(HOME)/.config/fish/fish_plugins
-	fish -c "fisher update"
+	#fish -c "fisher update"
 	bin/nvim -E +PlugInstall +qall
 
 clean:
