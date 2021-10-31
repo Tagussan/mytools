@@ -7,12 +7,12 @@ deploy: vimplug
 	mkdir -p $(HOME)/.config/fish
 	ln -s `pwd`/config/config.fish $(HOME)/.config/fish/config.fish
 	#rm $(HOME)/.config/fish/fish_plugins
-	ln -s `pwd`/config/fish_plugins $(HOME)/.config/fish/fish_plugins
+	#ln -s `pwd`/config/fish_plugins $(HOME)/.config/fish/fish_plugins
 	#fish -c "fisher update"
 	bin/nvim -E +PlugInstall +qall
 
 clean:
-	rm -rf $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/nvim $(HOME)/.gitconfig $(HOME)/.config/fish
+	rm -rf $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/nvim $(HOME)/.gitconfig $(HOME)/.config/fish $(HOME)/.zinit $(HOME)/.zplug $(HOME)/.zcomet $(HOME)/zcompdump*
 
 install-ubuntu: install fish-ubuntu zsh-ubuntu
 

@@ -1,28 +1,23 @@
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+# Clone zcomet if necessary
+if [[ ! -f ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh ]]; then
+  command git clone https://github.com/agkozak/zcomet.git ${ZDOTDIR:-${HOME}}/.zcomet/bin
 fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-### End of Zinit's installer chunk
+source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
 #
-zinit light "peterhurford/git-aliases.zsh"
-zinit light "agkozak/agkozak-zsh-prompt"
-zinit light "zsh-users/zsh-autosuggestions"
-zinit light "zsh-users/zsh-syntax-highlighting"
+
+zcomet load "peterhurford/git-aliases.zsh"
+zcomet load "agkozak/agkozak-zsh-prompt"
+zcomet load "zsh-users/zsh-autosuggestions"
+zcomet load "zsh-users/zsh-syntax-highlighting"
 
 export PATH="$HOME/mytools/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # taken from https://github.com/Aloxaf/dotfiles/blob/master/zsh/.config/zsh/zshrc.zsh
-zinit wait="0" lucid light-mode for larkery/zsh-histdb
+zcomet load larkery/zsh-histdb
+zcomet compinit
+
 _zsh_autosuggest_strategy_histdb_top() {
     local query="
         select commands.argv from history
@@ -35,6 +30,7 @@ _zsh_autosuggest_strategy_histdb_top() {
     "
     suggestion=$(_histdb_query "$query")
 }
+
 ZSH_AUTOSUGGEST_STRATEGY=(histdb_top match_prev_cmd completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1

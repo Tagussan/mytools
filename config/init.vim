@@ -209,6 +209,8 @@ let g:completion_matching_smart_case = 1
 "**************************
 " Filer
 "**************************
+let g:nvim_tree_disable_window_picker = 1
+let g:nvim_tree_quit_on_open = 1
 nnoremap <C-f> :NvimTreeToggle<CR>
 
 lua <<EOF
