@@ -14,9 +14,9 @@ deploy: vimplug
 clean:
 	rm -rf $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/nvim $(HOME)/.gitconfig $(HOME)/.config/fish $(HOME)/.zinit $(HOME)/.zplug $(HOME)/.zcomet $(HOME)/zcompdump*
 
-install-ubuntu: install fish-ubuntu zsh-ubuntu
+install-ubuntu: install fish-ubuntu zsh-ubuntu sqlite-ubuntu
 
-install: tmux nvim delta lsd ripgrep zoxide mcfly github-cli sqlite
+install: tmux nvim delta lsd ripgrep zoxide mcfly github-cli
 
 tmux:
 	./install/tmux/install.sh
@@ -54,9 +54,9 @@ github-cli:
 	./install/gh-cli/install.sh
 	cp ./install/gh-cli/temp/build/gh bin/
 
-sqlite:
-	./install/sqlite/install.sh
-	cp ./install/sqlite/temp/build/sqlite3 bin/
+sqlite-ubuntu:
+	sudo apt update
+	sudo apt install sqlite3 -y
 
 fish-ubuntu:
 	sudo apt-add-repository ppa:fish-shell/release-3

@@ -26,6 +26,7 @@ Plug 'kyazdani42/nvim-tree.lua', { 'tag' : '1.2.8' }
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'PHSix/nvim-hybrid'
 call plug#end()
 
 set noshowmode
@@ -37,6 +38,7 @@ set termguicolors
 let g:nvcode_termcolors=256
 syntax on
 colorscheme hybrid
+"colorscheme nvim-hybrid
 
 "share clipboard
 " set clipboard=unnamed,unnamedplus
@@ -76,6 +78,12 @@ nnoremap <C-a> ^
 vnoremap <C-e> $
 vnoremap <C-a> ^
 nnoremap <Esc><Esc> :nohlsearch<CR>
+
+" global copy
+vnoremap <C-c> :w! ~/.vimbuffer<CR>
+nnoremap <C-c> :.w! ~/.vimbuffer<CR>
+" global paste
+noremap <C-p> :r ~/.vimbuffer<CR>
 
 " indent guide
 let g:indent_guides_enable_on_vim_startup = 1
