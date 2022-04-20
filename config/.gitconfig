@@ -24,7 +24,7 @@
     excludesfile = $HOME/.gitignore_global
 
 [pager]
-    diff = delta --theme='zenburn'
+    diff = delta --dark
 
 #[filter "nbstripout"]
 #       clean = $HOME/.local/bin/nbstripout
