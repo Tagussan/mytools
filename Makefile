@@ -14,7 +14,7 @@ deploy: vimplug
 clean:
 	rm -rf $(HOME)/.zshrc $(HOME)/.tmux.conf $(HOME)/.config/nvim $(HOME)/.gitconfig $(HOME)/.config/fish $(HOME)/.zinit $(HOME)/.zplug $(HOME)/.zcomet $(HOME)/zcompdump*
 
-install-ubuntu: install fish-ubuntu zsh-ubuntu sqlite-ubuntu
+install-ubuntu: install zsh-ubuntu sqlite-ubuntu
 
 install: tmux nvim delta lsd ripgrep zoxide mcfly github-cli
 
