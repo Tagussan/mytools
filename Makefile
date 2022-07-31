@@ -16,7 +16,7 @@ clean:
 
 install-ubuntu: install zsh-ubuntu sqlite-ubuntu
 
-install: tmux nvim delta lsd ripgrep zoxide mcfly github-cli
+install: tmux nvim delta lsd ripgrep zoxide mcfly github-cli fzf
 
 tmux:
 	./install/tmux/install.sh
@@ -53,6 +53,10 @@ mcfly:
 github-cli:
 	./install/gh-cli/install.sh
 	cp ./install/gh-cli/temp/build/gh bin/
+
+fzf:
+	./install/fzf/install.sh
+	cp ./install/fzf/temp/fzf bin/
 
 sqlite-ubuntu:
 	sudo apt update
