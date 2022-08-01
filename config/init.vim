@@ -18,11 +18,8 @@ Plug 'simeji/winresizer'
 Plug 'svermeulen/vim-easyclip'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'haorenW1025/completion-nvim'
-Plug 'steelsojka/completion-buffers'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'nvim-treesitter/completion-treesitter'
-Plug 'kyazdani42/nvim-tree.lua', { 'tag' : '1.2.8' }
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
@@ -181,55 +178,52 @@ let g:cursorhold_updatetime = 100
 
 "**************************
 " Completion settings
+" Minimum autocompletion from https://gist.github.com/vheon/10104517
 "**************************
-let g:vsc_type_complete_length = 1
 
-nmap <silent> <C-g> :History<CR>
+set cot=menu,menuone
 
-" Configure the completion chains
-let g:completion_chain_complete_list = {
-			\'default' : {
-			\	'default' : [
-			\		{'complete_items' : ['ts', 'buffers']},
-			\		{'mode' : 'file'}
-			\	],
-			\	'comment' : [],
-			\	'string' : []
-			\	},
-			\}
-
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
-
-" Use <Tab> and <S-Tab> to navigate through popup menu
+ino <BS> <BS><C-r>=getline('.')[col('.')-3:col('.')-2]=~#'\k\k'?!pumvisible()?"\<lt>C-n>\<lt>C-p>":'':pumvisible()?"\<lt>C-y>":''<CR>
+inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : ""
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
+function! s:skinny_insert(char)
+  if !pumvisible() && !exists('s:skinny_complete') &&
+              \ getline('.')[col('.') - 2].a:char =~# '\k\k'
+    let s:skinny_complete = 1
+    noautocmd call feedkeys("\<C-n>\<C-p>", "nt")
+  endif
+endfunction
 
-" Avoid showing message extra message when using completion
-set shortmess+=c
-
-let g:completion_sorting = "length"
-let g:completion_matching_smart_case = 1
+augroup SkinnyAutoComplete
+  autocmd!
+  autocmd InsertCharPre * call <SID>skinny_insert(v:char)
+  autocmd CompleteDone * if exists('s:skinny_complete') | unlet s:skinny_complete | endif
+augroup END
 
 "**************************
 " Filer
 "**************************
-let g:nvim_tree_disable_window_picker = 1
-let g:nvim_tree_quit_on_open = 1
-nnoremap <C-f> :NvimTreeToggle<CR>
-
 lua <<EOF
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
--- default mappings
-vim.g.nvim_tree_bindings = {
-  { key = {"<CR>", "l"}, cb = tree_cb("edit") },
-  { key = "s",             cb = tree_cb("vsplit") },
-  { key = "t",             cb = tree_cb("tabnew") },
-  { key = "h",             cb = tree_cb("close_node") },
-  { key = "r",             cb = tree_cb("refresh") },
-  { key = "q",             cb = tree_cb("close") }
-}
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+	{ key = {"<CR>", "l"}, action = "edit" },
+	{ key = "s",             action = "vsplit" },
+	{ key = "t",             action = "tabnew" },
+	{ key = "h",             action = "close_node" },
+	{ key = "r",             action = "refresh" },
+	{ key = "q",             action = "close" }
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+})
 EOF
+nnoremap <C-f> :NvimTreeToggle<CR>
