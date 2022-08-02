@@ -184,7 +184,7 @@ let g:cursorhold_updatetime = 100
 set cot=menu,menuone
 
 ino <BS> <BS><C-r>=getline('.')[col('.')-3:col('.')-2]=~#'\k\k'?!pumvisible()?"\<lt>C-n>\<lt>C-p>":'':pumvisible()?"\<lt>C-y>":''<CR>
-inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : ""
+inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\n"
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
