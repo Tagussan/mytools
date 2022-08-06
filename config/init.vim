@@ -19,7 +19,7 @@ Plug 'svermeulen/vim-easyclip'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'kyazdani42/nvim-tree.lua'
+"Plug 'kyazdani42/nvim-tree.lua'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
@@ -205,25 +205,55 @@ augroup END
 "**************************
 " Filer
 "**************************
-lua <<EOF
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    adaptive_size = true,
-    mappings = {
-      list = {
-	{ key = {"<CR>", "l"}, action = "edit" },
-	{ key = "s",             action = "vsplit" },
-	{ key = "t",             action = "tabnew" },
-	{ key = "h",             action = "close_node" },
-	{ key = "r",             action = "refresh" },
-	{ key = "q",             action = "close" }
-      },
-    },
-  },
-  renderer = {
-    group_empty = true,
-  },
-})
-EOF
-nnoremap <C-f> :NvimTreeToggle<CR>
+"lua <<EOF
+"require("nvim-tree").setup({
+"  sort_by = "case_sensitive",
+"  view = {
+"    adaptive_size = true,
+"    mappings = {
+"      list = {
+"	{ key = {"<CR>", "l"}, action = "edit" },
+"	{ key = "s",             action = "vsplit" },
+"	{ key = "t",             action = "tabnew" },
+"	{ key = "h",             action = "close_node" },
+"	{ key = "r",             action = "refresh" },
+"	{ key = "q",             action = "close" }
+"      },
+"    },
+"  },
+"  renderer = {
+"    group_empty = true,
+"  },
+"})
+"EOF
+"nnoremap <C-f> :NvimTreeToggle<CR>
+
+" Netrw setting
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 2
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+let g:netrw_fastbrowse = 0
+
+autocmd FileType netrw setl bufhidden=wipe
+
+augroup netrw_mapping
+    autocmd!
+    autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! OpenAndClose()
+  :normal P
+  :Lex
+endfunction
+
+function! NetrwMapping()
+    noremap <buffer> h -
+    noremap <buffer> D <Nop>
+    noremap <buffer> d <Nop>
+    noremap <buffer> R <Nop>
+    noremap <buffer> s :call OpenAndClose()<CR>
+endfunction
+
+nnoremap <C-f> :Lex<CR>
