@@ -182,6 +182,7 @@ let g:cursorhold_updatetime = 100
 "**************************
 
 set cot=menu,menuone
+set omnifunc=syntaxcomplete#Complete
 
 ino <BS> <BS><C-r>=getline('.')[col('.')-3:col('.')-2]=~#'\k\k'?!pumvisible()?"\<lt>C-n>\<lt>C-p>":'':pumvisible()?"\<lt>C-y>":''<CR>
 inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\n"
@@ -235,6 +236,7 @@ let g:netrw_browse_split = 2
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
 let g:netrw_fastbrowse = 0
+let g:netrw_list_hide= '(.*\.swp$)|(.*\.dll$)|(.*\.exe$)'
 
 autocmd FileType netrw setl bufhidden=wipe
 
@@ -244,7 +246,7 @@ augroup netrw_mapping
 augroup END
 
 function! OpenAndClose()
-  :normal P
+  :normal v
   :Lex
 endfunction
 

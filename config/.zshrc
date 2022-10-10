@@ -63,6 +63,7 @@ setopt share_history
 
 alias ls=lsd
 alias v=nvim
+alias pip3='DISPLAY= pip3'
 
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
