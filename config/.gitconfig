@@ -39,3 +39,4 @@
 [delta]
     side-by-side = true
     line-numbers = true
+    wrap-max-lines = unlimited

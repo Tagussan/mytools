@@ -112,3 +112,14 @@ eval "$(zoxide init zsh)"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+function open() {
+    if [ $# != 1 ]; then
+        explorer.exe .
+    else
+        if [ -e $1 ]; then
+            cmd.exe /c start $(wslpath -w $1) 2> /dev/null
+        else
+            echo "open: $1 : No such file or directory" 
+        fi
+    fi
+}

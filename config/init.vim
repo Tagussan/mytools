@@ -19,11 +19,12 @@ Plug 'svermeulen/vim-easyclip'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-"Plug 'kyazdani42/nvim-tree.lua'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'PHSix/nvim-hybrid'
+Plug 'jinh0/eyeliner.nvim'
+Plug 'AndrewRadev/sideways.vim'
 call plug#end()
 
 set noshowmode
@@ -61,6 +62,7 @@ set laststatus=2
 set undofile
 set undodir=~/.config/nvim/undodir
 set fileformat=unix
+set autoread
 
 " keymaps
 nnoremap j gj
@@ -259,3 +261,12 @@ function! NetrwMapping()
 endfunction
 
 nnoremap <C-f> :Lex<CR>
+
+" Remember cursor position
+augroup vimrc-remember-cursor-position
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+nnoremap <c-h> :SidewaysLeft<cr>
+nnoremap <c-l> :SidewaysRight<cr>
