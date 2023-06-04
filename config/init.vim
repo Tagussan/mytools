@@ -157,6 +157,11 @@ au FileType systemverilog     let b:AutoPairs = AutoPairsDefine({'begin': 'end//
 " let g:ale_verilog_verilator_options = '-I ./'
 au FileType systemverilog
     \ let g:ale_linters = {'systemverilog' : ['verilator'],}
+let opts = '-std=c++17 -Wall -Wextra'
+let g:ale_linters = { 'cpp': ['cc', 'gcc', 'clang'] }
+let g:ale_cpp_cc_options    = opts
+let g:ale_cpp_gcc_options   = opts
+let g:ale_cpp_clang_options = opts
 
 hi Normal guibg=NONE ctermbg=NONE
 let g:winresizer_start_key = '<C-S>'

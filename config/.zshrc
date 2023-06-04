@@ -14,24 +14,9 @@ zcomet load "zsh-users/zsh-syntax-highlighting"
 export PATH="$HOME/mytools/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-# taken from https://github.com/Aloxaf/dotfiles/blob/master/zsh/.config/zsh/zshrc.zsh
-zcomet load larkery/zsh-histdb
 zcomet compinit
 
-_zsh_autosuggest_strategy_histdb_top() {
-    local query="
-        select commands.argv from history
-        left join commands on history.command_id = commands.rowid
-        left join places on history.place_id = places.rowid
-        where commands.argv LIKE '$(sql_escape $1)%'
-        group by commands.argv, places.dir
-        order by places.dir != '$(sql_escape $PWD)', count(*) desc
-        limit 1
-    "
-    suggestion=$(_histdb_query "$query")
-}
-
-ZSH_AUTOSUGGEST_STRATEGY=(histdb_top match_prev_cmd completion)
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 
@@ -119,7 +104,7 @@ function open() {
         if [ -e $1 ]; then
             cmd.exe /c start $(wslpath -w $1) 2> /dev/null
         else
-            echo "open: $1 : No such file or directory" 
+            echo "open: $1 : No such file or directory"
         fi
     fi
 }
