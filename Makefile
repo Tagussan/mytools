@@ -44,6 +44,10 @@ ripgrep:
 	./install/ripgrep/install.sh
 	cp ./install/ripgrep/temp/build/rg bin/
 
+fd:
+	./install/fd/install.sh
+	cp ./install/fd/temp/build/fd bin/
+
 zoxide:
 	./install/zoxide/install.sh
 

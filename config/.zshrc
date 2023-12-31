@@ -16,7 +16,11 @@ export PATH="$HOME/.local/bin:$PATH"
 
 zcomet compinit
 
-ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
+_zsh_autosuggest_strategy_atuin() {
+    suggestion=$(atuin search --limit 1 --offset 1 --cwd . --format "{command}" $1)
+}
+
+ZSH_AUTOSUGGEST_STRATEGY=(atuin)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 
@@ -59,9 +63,9 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 
-export DISPLAY=export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+# export DISPLAY=export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 export PATH="$PATH:$HOME/.cargo/bin"
-export GDK_SCALE=2
+# export GDK_SCALE=2
 
 export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -87,11 +91,11 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 #eval "$(pyenv init -)"
 #
 
-export CPLUS_INCLUDE_PATH=/usr/include/c++/9:/usr/include/x86_64-linux-gnu/c++/9
+export CPLUS_INCLUDE_PATH=/usr/include/c++/9:/usr/include/x86_64-linux-gnu/c++/9:/usr/include
 
-export MCFLY_FUZZY=true
-export MCFLY_INTERFACE_VIEW=BOTTOM
-eval "$(mcfly init zsh)"
+#export MCFLY_FUZZY=true
+#export MCFLY_INTERFACE_VIEW=BOTTOM
+#eval "$(mcfly init zsh)"
 eval "$(zoxide init zsh)"
 
 # Generated for envman. Do not edit.
@@ -108,3 +112,21 @@ function open() {
         fi
     fi
 }
+
+export GDK_BACKEND=x11
+# export GDK_DPI_SCALE=0.7
+export MESA_GL_VERSION_OVERRIDE=4.5
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/ytaguchi/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
+
+eval "$(atuin init zsh)"
+
+
+export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"

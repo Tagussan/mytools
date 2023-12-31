@@ -1,8 +1,9 @@
 [user]
-    name = Tagussan
+	name = Tagussan
+	email = taguchi.2718@gmail.com
 
 [alias]
-    st = status
+    st = status --short
     lgs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     lg = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     today = log --oneline --since='12 hour ago'
@@ -15,8 +16,10 @@
     helper = cache --timeout=3600
 [push]
     default = simple
+    autoSetupRemote = true
 [merge]
     ff = false
+	conflictStyle = diff3
 [pull]
     rebase = true
 [core]
