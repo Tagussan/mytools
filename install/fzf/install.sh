@@ -2,7 +2,7 @@
 set eu
 cd `dirname $0`
 
-VERSION=0.31.0
+VERSION=0.44.1
 
 [ -e temp ] && rm -rf temp
 
